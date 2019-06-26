@@ -3,8 +3,8 @@
 <launch>
 
   <!-- Sensor parameters -->
-  <arg name="sensor_name"     default="kinect01" />
-  <arg name="sensor_id" default="512150742542" />
+  <arg name="sensor_name"     default="kinect02" />
+  <arg name="sensor_id" default="502473741942" />
 
   <!-- Launch sensor -->
   <include file="$(find kinect2_bridge)/launch/kinect2_bridge_ir.launch">

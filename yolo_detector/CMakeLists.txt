@@ -5,10 +5,10 @@ project(yolo_detector)
 
 
 find_package(catkin REQUIRED
-    COMPONENTS dynamic_reconfigure 
-    		   message_filters 
-    		   sensor_msgs 
-    		   cv_bridge 
+    COMPONENTS dynamic_reconfigure
+    		   message_filters
+    		   sensor_msgs
+    		   cv_bridge
     		   image_transport
     		   opt_msgs
     		   opt_utils)
@@ -20,7 +20,7 @@ generate_dynamic_reconfigure_options(
 find_package(OpenCV 3.1 REQUIRED)
 
 catkin_package( CATKIN_DEPENDS message_filters sensor_msgs image_transport)
-  
+
 find_package(CUDA QUIET REQUIRED)
 
 find_package(Eigen3 REQUIRED)
@@ -40,16 +40,18 @@ include_directories(
 	${DARKNET_SRC_DIR}/include
 	${DARKNET_SRC_DIR}/src
 	/usr/local/cuda/include #for CuDNN, CuBLAS, CuRAND
+  /home/weiy/lib/cudnn-8.0-linux-x64-v5.1/cuda/include
 )
 
 link_directories(${OpenCV_LIBRARY_DIRS})
 link_directories(${DARKNET_SRC_DIR}/src)
 link_directories(${CUDA_LIBRARY_DIRS})
 link_directories(/usr/local/cuda/lib64) #for CuDNN, CuBLAS, CuRAND
+link_directories(/home/weiy/lib/cudnn-8.0-linux-x64-v5.1/cuda/include/lib64) #for CuDNN, CuBLAS, CuRAND
 
 set(
     CUDA_NVCC_FLAGS
-      "-gencode arch=compute_60,code=sm_61 -gencode arch=compute_20,code=[sm_20,sm_21] -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_50,code=[sm_50,compute_50] -gencode arch=compute_52,code=[sm_52,compute_52] -DGPU -I/usr/local/cuda/include/ -DCUDNN  --compiler-options \"-Wall -Wfatal-errors  -Ofast -DOPENCV -DGPU -DCUDNN\""
+      "-gencode arch=compute_60,code=sm_61 -gencode arch=compute_30,code=sm_30 -gencode arch=compute_35,code=sm_35 -gencode arch=compute_50,code=[sm_50,compute_50] -gencode arch=compute_52,code=[sm_52,compute_52] -DGPU -I/usr/local/cuda/include/ -DCUDNN  --compiler-options \"-Wall -Wfatal-errors  -Ofast -DOPENCV -DGPU -DCUDNN\""
 )
 
 

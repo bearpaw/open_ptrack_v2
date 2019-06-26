@@ -1,35 +1,21 @@
-
 enable_people_tracking: true
 enable_pose: true
 enable_object: true
 # Camera network parameters
 network:
-  - pc: "PC1"
+  - pc: "srl"
     sensors:
       - type: kinect2
         id: "kinect01"
+        serial: "512150742542"
         people_detector: hog
-  - pc: "PC2"
-    sensors:
       - type: kinect2
         id: "kinect02"
+        serial: "502473741942"
         people_detector: hog
-  - pc: "PC3"
-    sensors:
-      - type: kinect2
-        id: "kinect03"
-        people_detector: hog
-
-#  - pc: "opt2-chela-master"
-#    sensors:
-#      - type: kinect2
-#        id: "kinect06"
-#        people_detector: hog
-
 # Checkerboard parameters
 checkerboard:
-  rows: 6
-  cols: 5
-  cell_width: 0.07
-  cell_height: 0.07
-
+  rows: 7
+  cols: 10
+  cell_width: 0.09
+  cell_height: 0.09
